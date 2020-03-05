@@ -1,0 +1,2 @@
+2020-03-05 23:35:56 [WARN] file_test.go logger.TestFileLog:13 test Debug file not fount
+2020-03-05 23:36:06 [WARN] file_test.go logger.TestFileLog:13 test Debug file not fount

@@ -64,6 +64,7 @@ func (f *FileLog) init() {
 
 	f.logChan = make(chan *logData, 50000)
 	f.file = file
+
 }
 
 func (f *FileLog) Debug(format string, args ...interface{}) {
