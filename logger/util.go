@@ -2,6 +2,7 @@ package logger
 
 import (
 	"fmt"
+	"os"
 	"path"
 	"runtime"
 	"time"
@@ -86,4 +87,19 @@ func writeLog(ch chan<- *logData, level int, format string, args ...interface{})
 	default:
 	}
 
+}
+
+func backupFile(oldFileName, newFileName string) (*os.File, error) {
+	err := os.Rename(oldFileName, newFileName)
+	if err != nil {
+		fmt.Errorf("backup file error:%v", err)
+		return nil, err
+	}
+
+	file, err := os.OpenFile(oldFileName, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
+	if err != nil {
+		fmt.Errorf("open file err:%v\n", err)
+		return nil, err
+	}
+	return file, nil
 }
